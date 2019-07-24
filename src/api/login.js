@@ -1,11 +1,22 @@
 import request from '@/utils/request'
 
-export function login(username, password) {
+export function getMyToken(appid, appsecret) {
   return request({
-    url: '/user/login',
+    url: '/Index/gettoken',
     method: 'post',
     data: {
-      username,
+      appid,
+      appsecret
+    }
+  })
+}
+
+export function login(phone, password) {
+  return request({
+    url: '/index/login',
+    method: 'post',
+    data: {
+      phone,
       password
     }
   })
