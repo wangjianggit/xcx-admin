@@ -10,11 +10,14 @@
       <el-dropdown-menu slot="dropdown" class="user-dropdown">
         <router-link class="inlineBlock" to="/">
           <el-dropdown-item>
-            Home
+            首页
           </el-dropdown-item>
         </router-link>
         <el-dropdown-item divided>
-          <span style="display:block;" @click="logout">LogOut</span>
+          <span style="display:block;" @click="usercenter">个人中心</span>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
+          <span style="display:block;" @click="logout">退出</span>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -42,9 +45,13 @@ export default {
       this.$store.dispatch('ToggleSideBar')
     },
     logout() {
-      this.$store.dispatch('LogOut').then(() => {
+      this.$store.dispatch('FedLogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
       })
+    },
+    // 个人中心
+    usercenter() {
+      console.log('跳转个人中心')
     }
   }
 }
@@ -92,4 +99,3 @@ export default {
   }
 }
 </style>
-

@@ -30,8 +30,9 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
+    name: 'dashboard',
     hidden: true,
+    meta: { title: '商消乐'},
     children: [{
       path: 'dashboard',
       component: () => import('@/views/dashboard/index')
@@ -72,7 +73,102 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/storemanage',
+    component: Layout,
+    children: [
+      {
+        path: 'storemanage',
+        name: 'storemanage',
+        component: () => import('@/views/storemanage/index'),
+        meta: { title: '店铺管理', icon: 'store' }
+      }
+    ]
+  },
+  {
+    path: '/rule',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'rulecao',
+        component: () => import('@/views/rule/index'),
+        meta: { title: '权限管理', icon: 'rule' }
+      }
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'order',
+        component: () => import('@/views/vip/index'),
+        meta: { title: '订单管理', icon: 'order' }
+      }
+    ]
+  },
+  {
+    path: '/vip',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'vip',
+        component: () => import('@/views/vip/index'),
+        meta: { title: '会员管理', icon: 'huiyuan' }
+      }
+    ]
+  },
+  {
+    path: '/vipcard',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'vipcard',
+        component: () => import('@/views/vipcard/index'),
+        meta: { title: '会员卡管理', icon: 'vipcard' }
+      }
+    ]
+  },
+  {
+    path: '/wallet',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'wallet',
+        component: () => import('@/views/wallet/index'),
+        meta: { title: '钱包管理', icon: 'wallet' }
+      }
+    ]
+  },
+  {
+    path: '/slotcard',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'slotcard',
+        component: () => import('@/views/slotcard/index'),
+        meta: { title: '刷卡消费', icon: 'slotcard' }
+      }
+    ]
+  },
+  {
+    path: '/setiing',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'setiing',
+        component: () => import('@/views/setiing/index'),
+        meta: { title: '设置', icon: 'setiing' }
+      }
+    ]
+  },
   {
     path: '/nested',
     component: Layout,

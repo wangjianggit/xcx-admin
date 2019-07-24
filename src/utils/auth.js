@@ -1,14 +1,13 @@
-
-const TokenKey = 'token'
+const token = 'token'
 
 export function getToken() {
-  return localStorage.getItem(TokenKey);
+  return localStorage.getItem(token);
 }
 
-export function setToken(TokenKey, str) {
-  return localStorage.setItem(TokenKey, str);
+export function setToken(str) {
+  return localStorage.setItem(token, str);
 }
 
 export function removeToken() {
-  return localStorage.removeItem(TokenKey);
+  return localStorage.removeItem(token);
 }

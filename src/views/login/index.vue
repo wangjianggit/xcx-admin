@@ -1,9 +1,7 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">
-
-      </h3>
+      <h3 class="title">vue-admin-template</h3>
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
@@ -40,9 +38,6 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
-import { getMyToken } from '@/api/login'
-// import { setToken } from '@/src/utils/auth'
-import Cookies from 'js-cookie'
 
 export default {
   name: 'Login',
@@ -64,11 +59,11 @@ export default {
     return {
       loginForm: {
         username: '666',
-        password: '1234567'
+        password: '123456'
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', }],
-        password: [{ required: true, trigger: 'blur', }]
+        username: [{ required: true, trigger: 'blur'}],
+        password: [{ required: true, trigger: 'blur', validator: validatePass }]
       },
       loading: false,
       pwdType: 'password',
@@ -100,7 +95,6 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-
             this.$router.push({ path: this.redirect || '/' })
           }).catch(() => {
             this.loading = false
@@ -113,11 +107,21 @@ export default {
     },
     // 获取token
     getMyToken() {
-      getMyToken('123', '123miyao').then(res => {
+      let param = {
+        appid: '123',
+        appsecret: '123miyao'
+      }
+      this.$store.dispatch('GetMyToken', param).then(res => {
         console.log(res)
       }).catch(err => {
-        console.log(err)
+
       })
+      // getT('123', '123miyao').then(res => {
+      //   console.log(res)
+      //   // localStorage.setItem('token', res.token);
+      // }).catch(err => {
+      //   console.log(err)
+      // })
     }
   }
 }

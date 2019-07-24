@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getMyToken(appid, appsecret) {
+export function getmytoken(appid, appsecret) {
   return request({
-    url: '/Index/gettoken',
+    url: '/index/gettoken',
     method: 'post',
     data: {
       appid,
