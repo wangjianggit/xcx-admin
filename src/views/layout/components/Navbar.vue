@@ -51,6 +51,8 @@ export default {
     },
     // 个人中心
     usercenter() {
+      // this.@router
+      this.$router.push({name: 'mine',params:{ id:'1'}});
       console.log('跳转个人中心')
     }
   }

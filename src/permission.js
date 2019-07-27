@@ -3,21 +3,26 @@ import store from './store'
 import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import { Message } from 'element-ui'
-import { getToken } from '@/utils/auth' // 验权
+import { getToken, getLogin } from '@/utils/auth' // 验权
 
 const whiteList = ['/login'] // 不重定向白名单
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (getToken()) {
+  if (getToken() && getLogin()) {
+    console.log(1)
     if (window.localStorage.getItem('token') - new Date().getTime()/1000 <= 0) {
+      console.log(2)
       store.dispatch('FedLogOut').then(() => {
-        Message.error(err || 'Verification failed, please login again')
+        Message.error(err || '验证失败请重新登录')
+        console.log(3)
         next({ path: '/' })
       })
     } else {
+      console.log(4)
       if (to.path === '/login') {
         next({ path: '/' })
+        console.log(5)
         NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
       } else {
         next()

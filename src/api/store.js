@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 
-export function storeList(params) {
+export function storeList() {
   return request({
-    url: '/table/list',
+    url: '/Store/list',
     method: 'post',
-    params
+    data: {}
   })
 }

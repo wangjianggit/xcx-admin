@@ -25,19 +25,16 @@
       </el-form-item>
       <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
-          Sign in
+          登录
         </el-button>
       </el-form-item>
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div>
     </el-form>
   </div>
 </template>
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
+import store from '../../store/index.js'
 
 export default {
   name: 'Login',
@@ -95,6 +92,7 @@ export default {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
+            console.log(store)
             this.$router.push({ path: this.redirect || '/' })
           }).catch(() => {
             this.loading = false
@@ -178,16 +176,6 @@ $light_gray:#eee;
     max-width: 100%;
     padding: 35px 35px 15px 35px;
     margin: 120px auto;
-  }
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-    span {
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
   }
   .svg-container {
     padding: 6px 5px 6px 15px;

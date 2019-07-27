@@ -1,12 +1,13 @@
 import { login, logout, getInfo, getmytoken } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken, getLogin, setLogin, removeLogin } from '@/utils/auth'
 
 const user = {
   state: {
     token: getToken(),
     name: '',
     avatar: '',
-    roles: []
+    roles: [],
+    isLogin: false, //判断是否登录false 未登录  true 已登录
   },
 
   mutations: {
@@ -21,6 +22,9 @@ const user = {
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
+    },
+    SET_LOGIN: (state, isLogin) => {
+      state.isLogin = isLogin
     }
   },
 
@@ -45,16 +49,20 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
-          const data = response.data
-          // setToken(data.token)
-          // commit('SET_TOKEN', data.token)
+          const data = response
+          // debugger
+          console.log(response)
+          setToken(data.token)
+          commit('SET_TOKEN', data.token)
+          setLogin(true)
+          commit('SET_LOGIN', true)
+          console.log(user)
           resolve()
         }).catch(error => {
           reject(error)
         })
       })
     },
-
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
@@ -95,6 +103,7 @@ const user = {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')
         removeToken()
+        removeLogin()
         resolve()
       })
     }

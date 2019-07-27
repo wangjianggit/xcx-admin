@@ -31,19 +31,33 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/dashboard',
     name: 'dashboard',
-    hidden: true,
+    // hidden: true,
     meta: { title: '商消乐'},
     children: [{
       path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
+      component: () => import('@/views/dashboard/index'),
+      meta: {title: '首页', icon: 'home'}
     }]
   },
-
+  {
+    path: '/mine',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: 'index',
+        name: 'mine',
+        component: () => import('@/views/mine/index'),
+        // meta: { title: 'Form', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
+    hidden: true,
     meta: { title: 'Example', icon: 'example' },
     children: [
       {
@@ -60,7 +74,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
     path: '/form',
     component: Layout,
@@ -78,7 +91,7 @@ export const constantRouterMap = [
     component: Layout,
     children: [
       {
-        path: 'storemanage',
+        path: 'index',
         name: 'storemanage',
         component: () => import('@/views/storemanage/index'),
         meta: { title: '店铺管理', icon: 'store' }
@@ -141,7 +154,7 @@ export const constantRouterMap = [
         path: 'index',
         name: 'wallet',
         component: () => import('@/views/wallet/index'),
-        meta: { title: '钱包管理', icon: 'wallet' }
+        meta: { title: '钱包管理', icon: 'qianbao' }
       }
     ]
   },
@@ -170,14 +183,29 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/storemanage/addstore',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/storemanage/addstore',
+        name: 'addstore',
+        component: () => import('@/views/storemanage/addstore'),
+        meta: { title: '添加店铺', icon: ''},
+      }
+    ]
+  },
+  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Nested',
+    hidden: true,
     meta: {
       title: 'Nested',
       icon: 'nested'
     },
+
     children: [
       {
         path: 'menu1',
@@ -233,7 +261,7 @@ export const constantRouterMap = [
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: '外部链接', icon: 'link' }
       }
     ]
   },
