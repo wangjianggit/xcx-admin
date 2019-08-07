@@ -60,7 +60,6 @@ export default {
   },
   data() {
     return {
-      list: null,
       listLoading: true,
       storeList: null,  //店铺列表数据存储
     }

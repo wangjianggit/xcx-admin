@@ -2,50 +2,11 @@
   <div class="app-container wallet">
     <div class="app-title">
       钱包管理 -
-      <span>余额</span>
+      <span>我的银行卡</span>
     </div>
     <!-- content -->
     <div class="content" :style="{height: (windHeigth - 156)+'px'}">
-     <el-row :gutter="10">
-        <el-col :xs="24" :sm="12" :md="10" :lg="8" :xl="8">
-          <el-card class="box-card" v-loading="loading">
-             <img class="money-img" src="../../assets/icons/yingbi.png" alt="">
-             <span class="num">￥{{balance}}</span>
-             <div class="handel">
-              <div class="text j" @click="handeldetailShow">交易明细</div>
-              <div class="text t" @click="handeltake">提现</div>
-             </div>
-          </el-card>
-          <template >
-             <el-card class="box-card" style="margin-top: 15px; cursor: pointer; padding: 0;">
-              <i class="iconfont icon-jiahao" style="color: #a0cfff;" @click="addBank">&nbsp;&nbsp;添加银行卡</i>
-            </el-card>
-          </template>
-        </el-col>
-        <el-col :xs="24" :sm="12" :md="14" :lg="16" :xl="16">
-          <el-card class="box-card srcoll" v-show="detailShow">
-            <div class="outer-container" :style="{height: (windHeigth - 236)+'px'}" ref="outer">
-               <div class="inner-container" ref="inner">
-                  <div class="srcoll-content" :style="{height: (windHeigth - 236)+'px'}" ref="content">
-                    <div class="list-group" v-for="i in list">
-                      <span class="item">{{i.note}}</span>
-                      <span class="item">{{i.addtime*1000 | formatDate}}</span>
-                      <span class="item add" v-if="i.type == 1"><i class="iconfont">+</i> {{i.amount}}</span>
-                      <span class="item pre" v-if="i.type == 0"><i class="iconfont">-</i> {{i.amount}}</span>
-                    </div>
-                    <!-- 无限滚动组件 -->
-                    <infinite-loading  @infinite="infiniteHandler" ref="infiniteLoading" spinner="circles">
-                      <!-- <span slot="spinner">...</span> -->
-                      <div class="tips" slot="spinner">加载中...</div>
-                      <div slot="no-more">没有更多了</div>
-                      <div class="tips" slot="no-results">没有更多了</div>
-                    </infinite-loading>
-                  </div>
-               </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
+
     </div>
   </div>
 </template>
@@ -140,10 +101,10 @@ export default {
 
           this.$router.push({name: 'addBank'})
         }).catch(() => {
-          // this.$message({
-          //   type: 'info',
-          //   message: '取消删除'
-          // });
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
         });
       } else{
         // 已绑定流程

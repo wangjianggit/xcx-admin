@@ -17,8 +17,15 @@ import '@/permission' // permission control
 
 // 引入echarts
 import echarts from 'echarts'
-
 Vue.prototype.$echarts = echarts
+
+// 引入全局变量
+import GlobalData from '@/utils/global'
+Vue.prototype.Global = GlobalData
+
+// 引入无限滚动插件
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
 
 Vue.use(ElementUI, { locale })
 

@@ -75,18 +75,6 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-  {
     path: '/storemanage',
     component: Layout,
     children: [
@@ -117,7 +105,7 @@ export const constantRouterMap = [
       {
         path: 'index',
         name: 'order',
-        component: () => import('@/views/vip/index'),
+        component: () => import('@/views/order/index'),
         meta: { title: '订单管理', icon: 'order' }
       }
     ]
@@ -147,6 +135,18 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/vipcard/addvipcard',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/',
+        name: 'addvipacrd',
+        component: () => import('@/views/vipcard/addvipcard')
+      },
+    ]
+  },
+  {
     path: '/wallet',
     component: Layout,
     children: [
@@ -155,6 +155,13 @@ export const constantRouterMap = [
         name: 'wallet',
         component: () => import('@/views/wallet/index'),
         meta: { title: '钱包管理', icon: 'qianbao' }
+      },
+      {
+        path: 'addBank',
+        name: 'addBank',
+        hidden: true,
+        component: () => import('@/views/wallet/addBank'),
+        meta: { title: '添加银行卡', icon: 'none' }
       }
     ]
   },
