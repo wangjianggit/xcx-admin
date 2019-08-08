@@ -92,9 +92,16 @@ export const constantRouterMap = [
     children: [
       {
         path: 'index',
-        name: 'rulecao',
+        name: 'rule',
         component: () => import('@/views/rule/index'),
         meta: { title: '权限管理', icon: 'rule' }
+      },
+      {
+        path: 'ruleEdit',
+        name: 'ruleEdit',
+        hidden: true,
+        component: () => import('@/views/rule/ruleEdit'),
+        meta: { title: '角色编辑', icon: '' }
       }
     ]
   },

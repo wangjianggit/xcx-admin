@@ -14,14 +14,50 @@ export function ruleList() {
 }
 
 /**
- * 权限-搜索手机号码添加管理员
+ * 权限-手机号码搜索用户列表
  * param: phone
  * res: id,  phone
  * */
-export function ruleSearchAdd(page) {
+export function ruleSearchAdd(phone) {
   return request({
     url: '/Auth/searchadd',
     method: 'post',
-    data: {page}
+    data: {phone}
+  })
+}
+
+/** 权限-添加权限组（角色）接口
+ * param: name, authority-权限数据
+ * res:
+ * */
+export function addAuthority(name, authority) {
+  return request({
+    url: '/Auth/addauthority',
+    method: 'post',
+    data: {name, authority}
+  })
+}
+
+/** 权限-编辑权限组（角色组）
+ * param: id 角色ID
+ * res: select判断是否乙选择1选择0未选
+ * */
+export function editAuthority(id) {
+  return request({
+    url: '/Auth/editgroup',
+    method: 'post',
+    data: {id}
+  })
+}
+
+/** 权限-用户列表
+ * param:
+ * res:
+ * */
+export function userList() {
+  return request({
+    url: 'Auth/manage',
+    method: 'post',
+    data: {}
   })
 }

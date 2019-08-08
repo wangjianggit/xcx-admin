@@ -74,9 +74,7 @@ export default {
       page: 1, //默认分页
       windHeigth: document.body.clientHeight,
       detailShow: false, //明细是否显示
-      count: 30,
       resData: '',
-      busy: false,
       loadingShow: false
     }
   },
@@ -96,7 +94,7 @@ export default {
           if (res.list.length == 10) {
             that.page += 1;
             that.$refs.infiniteLoading.$emit("$InfiniteLoading:loaded");
-            $state.loaded();
+            // $state.loaded();
           } else if (res.list.length < 10) {
             $state.complete()
           }

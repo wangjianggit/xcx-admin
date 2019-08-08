@@ -44,6 +44,7 @@ service.interceptors.response.use(
       return Promise.reject('token出错')
     }
 
+    return Promise.resolve(response.data)
 
 
 //     if (res.code !== 20000) {

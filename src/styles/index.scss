@@ -99,23 +99,24 @@ a:hover {
     padding-bottom: 15px;
   }
 
-    .outer-container,.srcoll-content {
-    width: 100%;
-  }
+  //模拟无滚动条滚动
   .outer-container {
     position: relative;
+    width: 100%;
     overflow: hidden;
   }
   .inner-container {
-      position: absolute;
-      left: 0;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      width: 100%;
+    position: absolute;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
   }
-
+  .srcoll-content {
+    width: 100%;
+  }
    /* for Chrome */
   .inner-container::-webkit-scrollbar {
-      display: none;
+    // display: none;
   }
 }
